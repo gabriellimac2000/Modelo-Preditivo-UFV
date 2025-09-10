@@ -1,30 +1,30 @@
 # Modelo Preditivo para Análise de Eficiência de Usinas Fotovoltaicas
 
-[cite_start] Este projeto contém um script em Python para avaliar o desempenho de usinas fotovoltaicas, conforme descrito no artigo "AVALIAÇÃO DA EFICIÊNCIA DE USINAS SOLARES: INTEGRAÇÃO DE SIMULAÇÕES PVSYST E ANÁLISE COM PYTHON"[cite: 15].
+Este projeto contém um script em Python para avaliar o desempenho de usinas fotovoltaicas, conforme descrito no artigo "AVALIAÇÃO DA EFICIÊNCIA DE USINAS SOLARES: INTEGRAÇÃO DE SIMULAÇÕES PVSYST E ANÁLISE COM PYTHON".
 
-[cite_start] O script utiliza dados de simulação do software PVsyst e aplica o método dos mínimos quadrados para criar um modelo preditivo de geração de energia.
+O script utiliza dados de simulação do software PVsyst e aplica o método dos mínimos quadrados para criar um modelo preditivo de geração de energia.
 
 ## Funcionalidades
 
-* [cite_start] Carrega dados de um arquivo `.csv` gerado pelo PVsyst[cite: 177].
-* [cite_start] Realiza o pré-processamento dos dados, removendo valores inválidos e corrigindo a formatação[cite: 178].
-* [cite_start] Aplica um ajuste de curva com correção de saturação para melhorar a precisão do modelo[cite: 241].
-* [cite_start] Gera gráficos de dispersão (GlobInc vs. E_Grid) com a linha de tendência e o coeficiente de determinação (R²)[cite: 208].
-* [cite_start] Exibe a equação final do modelo preditivo[cite: 181].
+* **Carregamento de Dados**: O script lê dados de um arquivo `.csv` que contém informações de simulação, como irradiância solar e energia gerada.
+* **Pré-processamento**: Realiza a limpeza dos dados, removendo valores inválidos (como zeros e negativos) e convertendo a formatação para análise numérica.
+* **Correção de Saturação**: Identifica o ponto de saturação da geração de energia e filtra os dados para criar um modelo linear mais preciso, aumentando o coeficiente de determinação (R²) de 0,96 para 0,99.
+* **Análise e Visualização**: Gera gráficos de dispersão que relacionam a Irradiância Global (GlobInc) e a Energia Gerada (E_Grid). Os gráficos incluem a linha de tendência ajustada e o valor de R².
+* **Exportação do Modelo**: Ao final, exibe e imprime a equação da linha de tendência, que representa o modelo de geração da usina.
 
 ## Bibliotecas Utilizadas
 
-[cite_start] Para executar o script, as seguintes bibliotecas Python são necessárias[cite: 63, 64, 65, 66]:
+Para executar o script, as seguintes bibliotecas Python são necessárias:
 
-* `pandas`
-* `matplotlib`
-* `numpy`
-* `scipy`
-* `scikit-learn`
-* `tkinter`
+* `pandas`: Para manipulação e análise de dados.
+* `matplotlib.pyplot`: Para a criação dos gráficos.
+* `numpy`: Para operações numéricas.
+* `scipy` (curve_fit): Para utilizar o método dos mínimos quadrados no ajuste de curvas.
+* `scikit-learn` (r2_score): Para o cálculo do coeficiente de determinação (R²).
+* `tkinter`: Para criar a interface gráfica de seleção de arquivos.
 
 ## Como Usar
 
 1.  Execute o script Python.
-2.  Uma janela se abrirá para que você selecione o arquivo `.csv` com os dados exportados do PVsyst.
-3.  O script irá processar os dados e exibir dois gráficos com a análise e a linha de tendência. A equação do modelo será impressa no console.
+2.  Uma janela do sistema se abrirá, solicitando que você selecione o arquivo `.csv` com os dados exportados do PVsyst.
+3.  Após a seleção, o script processará os dados e exibirá dois gráficos com a análise. A equação final do modelo preditivo será impressa no console.
